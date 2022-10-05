@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Livros {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@Column(name = "codigodoliro")
 	private Integer codigolivro ;
 	@Column(name = "nomelivro")
 	private String nomelivro ;
@@ -34,6 +34,16 @@ public class Livros {
 	@ManyToOne
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
 	private Editora editora;
+	@OneToOne(mappedBy = "livro")
+	private Emprestimo emprestimos;
+
+	public Emprestimo getEmprestimos() {
+		return emprestimos;
+	}
+
+	public void setEmprestimos(Emprestimo emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 
 	public Integer getCodigolivro() {
 		return codigolivro;

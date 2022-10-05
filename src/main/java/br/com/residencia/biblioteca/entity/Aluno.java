@@ -1,12 +1,14 @@
 package br.com.residencia.biblioteca.entity;
 
 import java.time.Instant;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +41,15 @@ public class Aluno {
 	@Column(name = "cidade")
 	private String cidade;
 	
+	@OneToMany(mappedBy = "aluno")
+	private Set<Emprestimo> emprestimos;
+	
+	public Set<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
+	public void setEmprestimos(Set<Emprestimo> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -48,8 +59,8 @@ public class Aluno {
 	public Instant getDatadenascimento() {
 		return datadenascimento;
 	}
-	public void setDatadenascimento(Instant datadenascimento) {
-		this.datadenascimento = datadenascimento;
+	public void setDatadenascimento(Instant data) {
+		this.datadenascimento = data;
 	}
 	public String getCpf() {
 		return cpf;

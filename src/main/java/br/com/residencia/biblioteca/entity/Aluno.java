@@ -1,12 +1,14 @@
 package br.com.residencia.biblioteca.entity;
 
 import java.time.Instant;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +16,10 @@ import javax.persistence.Table;
 public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(mappedBy = "emprestimo")
+	private Set<Emprestimo> empretismos;
+	
+	
 	@Column(name = "numeromatriculaaluno")
 	private Integer numeroMatriculaAluno;
 	@Column(name = "nome")

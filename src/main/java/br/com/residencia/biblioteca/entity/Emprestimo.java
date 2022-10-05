@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 public class Emprestimo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
 	@Column(name = "codigolivro")
 	private Integer codigoemprestimo;
 	@Column(name = "numeromatriculaaluno")
@@ -29,9 +32,14 @@ public class Emprestimo {
 	private Instant dataentrega;
 	@Column(name = " valoremprestimo")
 	private BigDecimal  valoremprestimo ;
+	@ManyToOne
+	@JoinColumn(name = "numeromatriculaaluno", referencedColumnName = "numeromatriculaaluno")
+	private Aluno aluno;
 	@OneToOne
 	@JoinColumn(name = "codigodolivro", referencedColumnName = "codigodolivro")
-	Livros livro;
+	private Livros livro;
+	
+	
 	public Integer getCodigoemprestimo() {
 		return codigoemprestimo;
 	}

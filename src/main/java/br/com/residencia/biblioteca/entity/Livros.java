@@ -34,7 +34,9 @@ public class Livros {
 	@ManyToOne
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
 	private Editora editora;
-
+    @OneToOne(mappedBy = "Livros")
+	private Emprestimo emprestimos;
+	
 	public Integer getCodigolivro() {
 		return codigolivro;
 	}

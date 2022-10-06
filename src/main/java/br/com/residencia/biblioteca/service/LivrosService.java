@@ -20,7 +20,7 @@ public class LivrosService {
 	}
 
 public Livros getLivrosById(Integer id) {
-//	return alunoRepository.findById(id).orElse(null);
+//	return livroRepository.findById(id).orElse(null);
     return livroRepository.findById(id).get();
 
 }
@@ -29,18 +29,18 @@ public Livros saveLivros(Livros livro) {
 }
 
 public Livros updateLivros(Livros livro, Integer id) {
-	Livros alunoExistenteNoBanco = livroRepository.findById(id).get();	
-	alunoExistenteNoBanco.setCodigoisbn(livro.getCodigoisbn());
-	alunoExistenteNoBanco.setCodigolivro(livro.getCodigolivro());
-	alunoExistenteNoBanco.setDatalancamento(livro.getDatalancamento());
-	alunoExistenteNoBanco.setEditora(livro.getEditora());
-	alunoExistenteNoBanco.setEmprestimo(livro.getEmprestimo());
-	alunoExistenteNoBanco.setEmprestimos(livro.getEmprestimos());
-	alunoExistenteNoBanco.setNomeautor(livro.getNomeautor());
-	alunoExistenteNoBanco.setNomelivro(livro.getNomelivro());
+	Livros livroExistenteNoBanco = livroRepository.findById(id).get();	
+	livroExistenteNoBanco.setCodigoisbn(livro.getCodigoisbn());
+	livroExistenteNoBanco.setCodigolivro(livro.getCodigolivro());
+	livroExistenteNoBanco.setDatalancamento(livro.getDatalancamento());
+	//livroExistenteNoBanco.setEditora(livro.getEditora());
+	//livroExistenteNoBanco.setEmprestimo(livro.getEmprestimo());
+	//livroExistenteNoBanco.setEmprestimos(livro.getEmprestimos());
+	livroExistenteNoBanco.setNomeautor(livro.getNomeautor());
+	livroExistenteNoBanco.setNomelivro(livro.getNomelivro());
 
 	
-	return livroRepository.save(alunoExistenteNoBanco);
+	return livroRepository.save(livroExistenteNoBanco);
 }
 
 public Livros deleteLivros(Integer id)

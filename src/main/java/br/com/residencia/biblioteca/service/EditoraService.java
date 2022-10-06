@@ -17,20 +17,20 @@ public class EditoraService {
 	}
 
 public Editora getEditoraById(Integer id) {
-//	return alunoRepository.findById(id).orElse(null);
+//	return editoraRepository.findById(id).orElse(null);
     return editoraRepository.findById(id).get();
 
 }
-public Editora saveEditora(Editora aluno) {
-	return editoraRepository.save(aluno);
+public Editora saveEditora(Editora editora) {
+	return editoraRepository.save(editora);
 }
 
 public Editora updateEditora(Editora editora, Integer id) {
-	Editora alunoExistenteNoBanco = editoraRepository.findById(id).get();	
-	alunoExistenteNoBanco.setCodigoEditora(editora.getCodigoEditora());
-	alunoExistenteNoBanco.setLivros(editora.getLivros());
-	alunoExistenteNoBanco.setNome(editora.getNome());
-	return editoraRepository.save(alunoExistenteNoBanco);
+	Editora editoraExistenteNoBanco = editoraRepository.findById(id).get();	
+	editoraExistenteNoBanco.setCodigoEditora(editora.getCodigoEditora());
+	editoraExistenteNoBanco.setLivros(editora.getLivros());
+	editoraExistenteNoBanco.setNome(editora.getNome());
+	return editoraRepository.save(editoraExistenteNoBanco);
 }
 
 public Editora deleteEditora(Integer id)

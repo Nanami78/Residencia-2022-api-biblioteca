@@ -37,7 +37,6 @@ public Aluno updateAluno(Aluno aluno, Integer id) {
 	alunoExistenteNoBanco.setComplemento(aluno.getBairro());
 	alunoExistenteNoBanco.setCpf(aluno.getCpf());
 	alunoExistenteNoBanco.setDatadenascimento(aluno.getDatadenascimento());
-	alunoExistenteNoBanco.setEmprestimos(aluno.getEmprestimos());
 	alunoExistenteNoBanco.setLogradouro(aluno.getLogradouro());
 	alunoExistenteNoBanco.setNome(aluno.getNome());
 	alunoExistenteNoBanco.setNumerologradouro(aluno.getNumerologradouro());

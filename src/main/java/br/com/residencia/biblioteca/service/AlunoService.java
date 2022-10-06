@@ -44,6 +44,22 @@ public Aluno updateAluno(Aluno aluno, Integer id) {
 	alunoExistenteNoBanco.setNumeroMatriculaAluno(aluno.getNumeroMatriculaAluno());
 	return alunoRepository.save(alunoExistenteNoBanco);
 }
+
+public Aluno deleteAluno(Integer id) {
+	alunoRepository.deleteById(id);
+    return getAlunoById(id);
+
+}
+
+
+/*public Boolean deleteAlunoBool(Integer id) {
+	alunoRepository.deleteById(id);
+    if(null != getAlunoById(id))
+    	return false;
+    else
+    	return true;}*/
+
+
 }
 
 

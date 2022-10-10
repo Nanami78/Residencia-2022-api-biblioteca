@@ -17,7 +17,7 @@ public class Editora {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "codigoeditora")
-	private Integer codigoEditora;
+	private Integer codigoeditora;
 
 
 @Column(name = "nome")
@@ -29,12 +29,12 @@ private Set<Livros> livros;
 
 
 public Integer getCodigoEditora() {
-	return codigoEditora;
+	return codigoeditora;
 }
 
 
 public void setCodigoEditora(Integer codigoEditora) {
-	this.codigoEditora = codigoEditora;
+	this.codigoeditora = codigoEditora;
 }
 
 

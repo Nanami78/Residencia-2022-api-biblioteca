@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,19 +18,19 @@ import javax.persistence.Table;
 public class Livros {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codigodoliro")
-	private Integer codigolivro ;
+	@Column(name = "codigolivro")
+	private Integer codigolivro;
 	@Column(name = "nomelivro")
-	private String nomelivro ;
+	private String nomelivro;
 	@Column(name = "nomeautor")
-	private String nomeautor ;
+	private String nomeautor;
 	@Column(name = "datalancamento")
-	private Instant datalancamento ;
-	@Column(name ="codigoisbn")
-	private Integer codigoisbn ;
-	
-	//@Column(name = "codigoeditora")
-	//private Integer codigoeditora ;
+	private Instant datalancamento;
+	@Column(name = "codigoisbn")
+	private Integer codigoisbn;
+
+	// @Column(name = "codigoeditora")
+	// private Integer codigoeditora ;
 	
 	@ManyToOne
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
@@ -75,7 +76,7 @@ public class Livros {
 
 	public void setDatalancamento(Instant datalancamento) {
 		this.datalancamento = datalancamento;
-		
+
 	}
 
 	public Integer getCodigoisbn() {
@@ -95,18 +96,5 @@ public class Livros {
 	}
 
 
-@OneToOne(mappedBy = "livro")
-private Emprestimo emprestimo;
-
-public Emprestimo getEmprestimo() {
-	return emprestimo;
-}
-
-public void setEmprestimo(Emprestimo emprestimo) {
-	this.emprestimo = emprestimo;
-}
-
-
 
 }
-

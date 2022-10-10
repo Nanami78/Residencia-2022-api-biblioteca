@@ -17,22 +17,22 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "numeromatriculaaluno")
-	private Integer numeroMatriculaAluno;
+	private Integer numeromatriculaaluno;
 	@Column(name = "nome")
 	private String nome;
 	public Integer getNumeroMatriculaAluno() {
-		return numeroMatriculaAluno;
+		return numeromatriculaaluno;
 	}
 	public void setNumeroMatriculaAluno(Integer numeroMatriculaAluno) {
-		this.numeroMatriculaAluno = numeroMatriculaAluno;
+		this.numeromatriculaaluno = numeroMatriculaAluno;
 	}
-	@Column(name = "datadenascimento")
-	private Instant datadenascimento;
+	@Column(name = "datanascimento")
+	private Instant datanascimento;
 	@Column(name = "cpf")
 	private String cpf;
 	@Column(name = "logradouro")
 	private String logradouro;
-	@Column(name = "numerolougradoro")
+	@Column(name = "numerologradouro")
 	private String numerologradouro;
 	@Column(name = "complemento")
 	private String complemento;
@@ -56,11 +56,11 @@ public class Aluno {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Instant getDatadenascimento() {
-		return datadenascimento;
+	public Instant getDatanascimento() {
+		return datanascimento;
 	}
-	public void setDatadenascimento(Instant data) {
-		this.datadenascimento = data;
+	public void setDatanascimento(Instant data) {
+		this.datanascimento = data;
 	}
 	public String getCpf() {
 		return cpf;
@@ -80,7 +80,7 @@ public class Aluno {
 	public void setNumerologradouro(String numerologradouro) {
 		this.numerologradouro = numerologradouro;
 	}
-	public String getComplemento() {
+	public String getComplemento() { 
 		return complemento;
 	}
 	public void setComplemento(String complemento) {

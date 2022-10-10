@@ -17,8 +17,8 @@ public class EditoraService {
 	}
 
 public Editora getEditoraById(Integer id) {
-//	return editoraRepository.findById(id).orElse(null);
-    return editoraRepository.findById(id).get();
+	return editoraRepository.findById(id).orElse(null);
+   // return editoraRepository.findById(id).get();
 
 }
 public Editora saveEditora(Editora editora) {
@@ -26,7 +26,8 @@ public Editora saveEditora(Editora editora) {
 }
 
 public Editora updateEditora(Editora editora, Integer id) {
-	Editora editoraExistenteNoBanco = editoraRepository.findById(id).get();	
+	//Editora editoraExistenteNoBanco = editoraRepository.findById(id).get();	
+	Editora editoraExistenteNoBanco = getEditoraById(id);
 	editoraExistenteNoBanco.setCodigoEditora(editora.getCodigoEditora());
 	editoraExistenteNoBanco.setLivros(editora.getLivros());
 	editoraExistenteNoBanco.setNome(editora.getNome());
@@ -37,6 +38,11 @@ public Editora deleteEditora(Integer id)
 {
 	editoraRepository.deleteById(id);
 	return getEditoraById(id);
+}
+
+public Object getAllEmprestimo() {
+	// TODO Auto-generated method stub
+	return null;
 }
 
 }

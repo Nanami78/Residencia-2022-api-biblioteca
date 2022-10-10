@@ -29,7 +29,8 @@ public Livros saveLivros(Livros livro) {
 }
 
 public Livros updateLivros(Livros livro, Integer id) {
-	Livros livroExistenteNoBanco = livroRepository.findById(id).get();	
+	//Livros livroExistenteNoBanco = livroRepository.findById(id).get();	
+	Livros livroExistenteNoBanco = getLivrosById(id);
 	livroExistenteNoBanco.setCodigoisbn(livro.getCodigoisbn());
 	livroExistenteNoBanco.setCodigolivro(livro.getCodigolivro());
 	livroExistenteNoBanco.setDatalancamento(livro.getDatalancamento());

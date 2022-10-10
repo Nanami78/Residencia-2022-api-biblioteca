@@ -24,15 +24,15 @@ public Emprestimo saveEmprestimo(Emprestimo emprestimo) {
 }
 
 public Emprestimo updateEmprestimo(Emprestimo emprestimo, Integer id) {
-	Emprestimo emprestimoExistenteNoBanco = emprestimoRepository.findById(id).get();	
+	//Emprestimo emprestimoExistenteNoBanco = emprestimoRepository.findById(id).get();	
 	//empretimoExistenteNoBanco.setAluno(Aluno);
-	
+	Emprestimo emprestimoExistenteNoBanco = getEmprestimoById(id);
 	emprestimoExistenteNoBanco.setCodigoemprestimo(emprestimo.getCodigoemprestimo());
-	emprestimoExistenteNoBanco.setCodigolivro(emprestimo.getCodigolivro());
+	
 	emprestimoExistenteNoBanco.setDataemprestimo(emprestimo.getDataemprestimo());
 	emprestimoExistenteNoBanco.setDataentrega(emprestimo.getDataentrega());
 	emprestimoExistenteNoBanco.setLivro(emprestimo.getLivro());
-	emprestimoExistenteNoBanco.setNumeromatriculaaluno(emprestimo.getNumeromatriculaaluno());
+	emprestimoExistenteNoBanco.setAluno(emprestimo.getAluno());
 	emprestimoExistenteNoBanco.setValoremprestimo(emprestimo.getValoremprestimo());
 	
 

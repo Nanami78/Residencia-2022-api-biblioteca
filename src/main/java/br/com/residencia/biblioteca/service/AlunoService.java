@@ -12,54 +12,49 @@ import br.com.residencia.biblioteca.repository.AlunoRepository;
 public class AlunoService {
 
 	@Autowired
-	AlunoRepository alunoRepository ;
-	
-	public List<Aluno>getAllAlunos(){
+	AlunoRepository alunoRepository;
+
+	public List<Aluno> getAllAlunos() {
 		return alunoRepository.findAll();
 	}
 
-public Aluno getAlunoById(Integer id) {
-//	return alunoRepository.findById(id).orElse(null);
-    return alunoRepository.findById(id).get();
+	public Aluno getAlunoById(Integer id) {
+	return alunoRepository.findById(id).orElse(null);
+		//return alunoRepository.findById(id).get();
 
-}
-public Aluno saveAluno(Aluno aluno) {
-	return alunoRepository.save(aluno);
-}
-
-public Aluno updateAluno(Aluno aluno, Integer id) {
-	Aluno alunoExistenteNoBanco = alunoRepository.findById(id).get();
+	}
 	
-	//Aluno alunoExistenteNoBanco = getAlunoById(id);		
-			
-	alunoExistenteNoBanco.setBairro(aluno.getBairro());
-	alunoExistenteNoBanco.setCidade(aluno.getBairro());
-	alunoExistenteNoBanco.setComplemento(aluno.getBairro());
-	alunoExistenteNoBanco.setCpf(aluno.getCpf());
-	alunoExistenteNoBanco.setDatadenascimento(aluno.getDatadenascimento());
-	alunoExistenteNoBanco.setLogradouro(aluno.getLogradouro());
-	alunoExistenteNoBanco.setNome(aluno.getNome());
-	alunoExistenteNoBanco.setNumerologradouro(aluno.getNumerologradouro());
-	alunoExistenteNoBanco.setNumeroMatriculaAluno(aluno.getNumeroMatriculaAluno());
-	return alunoRepository.save(alunoExistenteNoBanco);
+	public Aluno saveAluno(Aluno aluno) {
+		return alunoRepository.save(aluno);
+	}
+
+	public Aluno updateAluno(Aluno aluno, Integer id) {
+		//Aluno alunoExistenteNoBanco = alunoRepository.findById(id).get();
+
+		 Aluno alunoExistenteNoBanco = getAlunoById(id);
+
+		alunoExistenteNoBanco.setBairro(aluno.getBairro());
+		alunoExistenteNoBanco.setCidade(aluno.getBairro());
+		alunoExistenteNoBanco.setComplemento(aluno.getBairro());
+		alunoExistenteNoBanco.setCpf(aluno.getCpf());
+		// alunoExistenteNoBanco.setDatadenascimento(aluno.getDatadenascimento());
+		alunoExistenteNoBanco.setLogradouro(aluno.getLogradouro());
+		alunoExistenteNoBanco.setNome(aluno.getNome());
+		alunoExistenteNoBanco.setNumerologradouro(aluno.getNumerologradouro());
+		alunoExistenteNoBanco.setNumeroMatriculaAluno(aluno.getNumeroMatriculaAluno());
+		return alunoRepository.save(alunoExistenteNoBanco);
+	}
+
+	public Aluno deleteAluno(Integer id) {
+		alunoRepository.deleteById(id);
+		return getAlunoById(id);
+
+	}
+	
+	
+	/*
+	 * public Boolean deleteAlunoBool(Integer id) { alunoRepository.deleteById(id);
+	 * if(null != getAlunoById(id)) return false; else return true;}
+	 */
+
 }
-
-public Aluno deleteAluno(Integer id) {
-	alunoRepository.deleteById(id);
-    return getAlunoById(id);
-
-}
-
-
-/*public Boolean deleteAlunoBool(Integer id) {
-	alunoRepository.deleteById(id);
-    if(null != getAlunoById(id))
-    	return false;
-    else
-    	return true;}*/
-
-
-}
-
-
-

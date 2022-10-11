@@ -9,73 +9,90 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "codigoEmprestimo")
 @Entity
 @Table(name = "emprestimo")
 public class Emprestimo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codigolivro")
-	private Integer codigoemprestimo;
-	@Column(name = "numeromatriculaaluno")
-	private Integer numeromatriculaaluno ;
-	@Column(name = "codigolivro")
-	private  Integer codigolivro ; 
+	@Column(name = "codigoemprestimo")
+	private Integer codigoEmprestimo;
+
 	@Column(name = "dataemprestimo")
-	private Instant dataemprestimo ;
+	private Instant dataEmprestimo;
+
 	@Column(name = "dataentrega")
-	private Instant dataentrega;
-	@Column(name = " valoremprestimo")
-	private BigDecimal  valoremprestimo ;
-	@OneToOne
-	@JoinColumn(name = "codigodolivro", referencedColumnName = "codigodolivro")
-	Livros livro;
-	public Integer getCodigoemprestimo() {
-		return codigoemprestimo;
+	private Instant dataEntrega;
+	
+	@Column(name = "valoremprestimo")
+	private BigDecimal valorEmprestimo;
+
+	@ManyToOne
+	@JoinColumn(name = "numeromatriculaaluno", 
+		referencedColumnName = "numeromatriculaaluno")
+	private Aluno aluno;
+
+	@ManyToOne
+	@JoinColumn(name = "codigolivro", referencedColumnName = "codigolivro")
+	private Livros livro;
+
+
+	public Integer getCodigoEmprestimo() {
+		return codigoEmprestimo;
 	}
-	public void setCodigoemprestimo(Integer codigoemprestimo) {
-		this.codigoemprestimo = codigoemprestimo;
+
+	public void setCodigoEmprestimo(Integer codigoEmprestimo) {
+		this.codigoEmprestimo = codigoEmprestimo;
 	}
-	public Integer getNumeromatriculaaluno() {
-		return numeromatriculaaluno;
+
+	public Instant getDataEmprestimo() {
+		return dataEmprestimo;
 	}
-	public void setNumeromatriculaaluno(Integer numeromatriculaaluno) {
-		this.numeromatriculaaluno = numeromatriculaaluno;
+
+	public void setDataEmprestimo(Instant dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
 	}
-	public Integer getCodigolivro() {
-		return codigolivro;
+
+	public Instant getDataEntrega() {
+		return dataEntrega;
 	}
-	public void setCodigolivro(Integer codigolivro) {
-		this.codigolivro = codigolivro;
+
+	public void setDataEntrega(Instant dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
-	public Instant getDataemprestimo() {
-		return dataemprestimo;
+
+	public BigDecimal getValorEmprestimo() {
+		return valorEmprestimo;
 	}
-	public void setDataemprestimo(Instant dataemprestimo) {
-		this.dataemprestimo = dataemprestimo;
+
+	public void setValorEmprestimo(BigDecimal valorEmprestimo) {
+		this.valorEmprestimo = valorEmprestimo;
 	}
-	public Instant getDataentrega() {
-		return dataentrega;
+
+	public Aluno getAluno() {
+		return aluno;
 	}
-	public void setDataentrega(Instant dataentrega) {
-		this.dataentrega = dataentrega;
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
-	public BigDecimal getValoremprestimo() {
-		return valoremprestimo;
-	}
-	public void setValoremprestimo(BigDecimal valoremprestimo) {
-		this.valoremprestimo = valoremprestimo;
-	}
+
 	public Livros getLivro() {
 		return livro;
 	}
+
 	public void setLivro(Livros livro) {
 		this.livro = livro;
 	}
 
-
-
 }
-

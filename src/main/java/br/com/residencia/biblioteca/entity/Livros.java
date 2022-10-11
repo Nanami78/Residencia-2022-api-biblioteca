@@ -1,6 +1,7 @@
 package br.com.residencia.biblioteca.entity;
 
 import java.time.Instant;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,81 +10,82 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "codigoLivro")
 @Entity
 @Table(name = "livros")
 public class Livros {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codigodoliro")
-	private Integer codigolivro ;
+	@Column(name = "codigolivro")
+	private Integer codigoLivro;
+
 	@Column(name = "nomelivro")
-	private String nomelivro ;
+	private String nomeLivro;
+
 	@Column(name = "nomeautor")
-	private String nomeautor ;
+	private String nomeAutor;
+
 	@Column(name = "datalancamento")
-	private Instant datalancamento ;
-	@Column(name ="codigoisbn")
-	private Integer codigoisbn ;
-	
-	//@Column(name = "codigoeditora")
-	//private Integer codigoeditora ;
-	
+	private Instant dataLancamento;
+
+	@Column(name = "codigoisbn")
+	private Integer codigoIsbn;
+
 	@ManyToOne
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
 	private Editora editora;
-	@OneToOne(mappedBy = "livro")
-	private Emprestimo emprestimos;
 
-	public Emprestimo getEmprestimos() {
-		return emprestimos;
+	@OneToMany(mappedBy = "livro")
+	private Set<Emprestimo> emprestimos;
+
+	public Integer getCodigoLivro() {
+		return codigoLivro;
 	}
 
-	public void setEmprestimos(Emprestimo emprestimos) {
-		this.emprestimos = emprestimos;
+	public void setCodigoLivro(Integer codigoLivro) {
+		this.codigoLivro = codigoLivro;
 	}
 
-	public Integer getCodigolivro() {
-		return codigolivro;
+	public String getNomeLivro() {
+		return nomeLivro;
 	}
 
-	public void setCodigolivro(Integer codigolivro) {
-		this.codigolivro = codigolivro;
+	public void setNomeLivro(String nomeLivro) {
+		this.nomeLivro = nomeLivro;
 	}
 
-	public String getNomelivro() {
-		return nomelivro;
+	public String getNomeAutor() {
+		return nomeAutor;
 	}
 
-	public void setNomelivro(String nomelivro) {
-		this.nomelivro = nomelivro;
+	public void setNomeAutor(String nomeAutor) {
+		this.nomeAutor = nomeAutor;
 	}
 
-	public String getNomeautor() {
-		return nomeautor;
+	public Instant getDataLancamento() {
+		return dataLancamento;
 	}
 
-	public void setNomeautor(String nomeautor) {
-		this.nomeautor = nomeautor;
+	public void setDataLancamento(Instant dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 
-	public Instant getDatalancamento() {
-		return datalancamento;
+	public Integer getCodigoIsbn() {
+		return codigoIsbn;
 	}
 
-	public void setDatalancamento(Instant datalancamento) {
-		this.datalancamento = datalancamento;
-		
-	}
-
-	public Integer getCodigoisbn() {
-		return codigoisbn;
-	}
-
-	public void setCodigoisbn(Integer codigoisbn) {
-		this.codigoisbn = codigoisbn;
+	public void setCodigoIsbn(Integer codigoIsbn) {
+		this.codigoIsbn = codigoIsbn;
 	}
 
 	public Editora getEditora() {
@@ -94,19 +96,11 @@ public class Livros {
 		this.editora = editora;
 	}
 
+	public Set<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
 
-@OneToOne(mappedBy = "livro")
-private Emprestimo emprestimo;
-
-public Emprestimo getEmprestimo() {
-	return emprestimo;
+	public void setEmprestimos(Set<Emprestimo> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 }
-
-public void setEmprestimo(Emprestimo emprestimo) {
-	this.emprestimo = emprestimo;
-}
-
-
-
-}
-

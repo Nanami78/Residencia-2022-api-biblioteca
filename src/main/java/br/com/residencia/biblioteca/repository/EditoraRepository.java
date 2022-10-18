@@ -7,4 +7,6 @@ package br.com.residencia.biblioteca.repository;
 	
 	public interface EditoraRepository extends
 		JpaRepository<Editora, Integer>{
+		
 }
+	
